@@ -3,6 +3,6 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka/}
+        defaultZone: ${EUREKA_DEFAULT_ZONE:http://host.docker.internal:8761/eureka/,http://localhost:8761/eureka/}
     fetch-registry: true
     register-with-eureka: true
