@@ -1,9 +1,23 @@
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-        defaultZone: ${EUREKA_SERVER_ADDRESS:http://host.docker.internal:8761,http://localhost:8761}
+# eureka:
+#   instance:
+#     prefer-ip-address: true
+#   client:
+#     fetch-registry: true
+#     register-with-eureka: true
+#     service-url:
+#         defaultZone: ${EUREKA_SERVER_ADDRESS:http://host.docker.internal:8761,http://localhost:8761}
+
+discovery:
+  container_name: serviceregistory
+  build: .
+  ports:
+    - "8761:8761"
+
+user-registration:
+  container_name: user-registration
+  build: .
+  ports:
+    - "9296:9296"
+  environment:
+    eureka.client.serviceUrl.defaultZone: http://serviceregistory:8761/eureka
 
