@@ -6,7 +6,9 @@ eureka:
     register-with-eureka: true
     prefer-ip-address: true
     service-url:
-      defaultZone: http://${EUREKA_SERVER_ADDRESS:localhost}:8761/eureka
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761}/eureka
+
+
 
       
 # okta:
